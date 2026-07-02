@@ -1,24 +1,11 @@
 PAGES = {};
 
-var ttsEnabled 		= true;
-var ttsPhonetic 	= true;
-var ttsVoice 		= 1;
-var ttsLast 		= ""; // quick fix for guesser repeating correct st names
-var ttsTranslations = {}
 var STREETNAMES 	= {}
 var streetSort 		= 0;
 var streetPage 		= false;
 var chargeDescribe 	= true;
 var guessZoom 		= true;
-var guessSayCorrect = true;
-var guessSayWrong 	= true;
 var curPage;
-function setVoice(x){
-	x = Number(x);
-	if (window.isDebug) console.log( "SET VOICE 2", x );
-	localStorage.setItem("ttsvoice", x);
-	ttsVoice = x;
-}
 function streetSortChange() {
 	if (++streetSort > 2) streetSort = 0;	
 	switch(streetSort){
@@ -33,39 +20,6 @@ function streetSortChange() {
             break;
 	}	
 	if (streetPage) streetPage.search.update("");	
-}
-function textToSpeach(message, noPhonetic = false ) {
-	if (!ttsEnabled) return;
-	
-	if (window.isDebug) console.log("TTS", ttsVoice );
-	
-	if (window.isDebug)console.log("GUESS 1", curPage, message, ttsLast );
-	if (curPage == "guesser" && message == ttsLast ){
-		if (window.isDebug)console.log("GUESS 2", curPage, message );
-		ttsLast = "";
-		return;
-	}
-	ttsLast = message;
-	
-	var msgToSend = (ttsPhonetic && !noPhonetic && PHONETICS && PHONETICS[ message ]) ? (PHONETICS[ message ] + "") : (message + "");
-	
-	const speach = new SpeechSynthesisUtterance(msgToSend);
-	speach.voice = speechSynthesis.getVoices()[ ttsVoice ];
-	speechSynthesis.speak(speach);
-}
-function togglePhonetics(noSave){
-	ttsPhonetic = !ttsPhonetic;
-	document.getElementById("ttsphonetics").style.backgroundColor = ttsPhonetic ? "lightgreen" : "salmon";
-	document.getElementById("ttsphonetics").innerHTML = ttsPhonetic ? "🦻PRONUNCIATIONS ENABLED" : "👂PRONUNCIATIONS DISABLED";
-	if (!noSave) localStorage.setItem("ttsphonetics", ttsPhonetic);
-}
-function toggleTTS( noSave ){
-	ttsEnabled = !ttsEnabled;
-	document.getElementById("ttspower").style.backgroundColor = ttsEnabled ? "lightgreen" : "salmon";
-	document.getElementById("ttspower").innerHTML = ttsEnabled ? "🔊TTS" : "🔇TTS";
-	document.getElementById("ttspower2").style.backgroundColor = ttsEnabled ? "lightgreen" : "salmon";
-	document.getElementById("ttspower2").innerHTML = ttsEnabled ? "🔊TEXT-TO-SPEECH ENABLED" : "🔇TEXT-TO-SPEECH DISABLED";
-	if (!noSave) localStorage.setItem("ttsenabled", ttsEnabled);
 }
 function toggleChargeDescriptions(){
 	chargeDescribe = !chargeDescribe;
@@ -212,7 +166,6 @@ function setupPages() {
     addPage("charges", new ChargesPage(document.getElementById("ChargesPage")));
     addPage("locations", new LocGuesserPage(document.getElementById("LocGuesserPage")));
     addPage("tencodes", new TenCodesPage(document.getElementById("TenCodesPage")));
-    addPage("settings", new SettingsPage(document.getElementById("SettingsPage")) );
 }
 function showPage(targetKey) {
 	targetKey = targetKey.toLowerCase();
@@ -277,7 +230,7 @@ function showPage(targetKey) {
 			
 			if ( street ){
 				streetPage.map.selectObject(street);
-				setTimeout( function(){ streetPage.map.focus(street, true) }, 500 );
+				setTimeout( function(){ streetPage.map.focus(street) }, 500 );
 			} else
 				deleteURLParam("id");
             break;

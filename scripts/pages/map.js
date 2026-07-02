@@ -173,8 +173,6 @@ class MapPage extends Page {
 
         document.getElementById("propertyTitle").innerHTML = propertyName;
 
-		// textToSpeach( propertyName );
-		
         var keyholderParent = document.getElementById("propertyKeyholders");
         keyholderParent.replaceChildren();
 

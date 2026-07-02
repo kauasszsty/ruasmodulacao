@@ -39,7 +39,6 @@
         <script type="text/javascript" src="scripts/search.js" defer></script>
         <script type="text/javascript" src="scripts/map.js" defer></script>
 
-        <script type="text/javascript" src="scripts/pages/settings.js" defer></script>
         <script type="text/javascript" src="scripts/pages/dashboard.js" defer></script>
         <script type="text/javascript" src="scripts/pages/profiles.js" defer></script>
         <script type="text/javascript" src="scripts/pages/properties.js" defer></script>
@@ -59,20 +58,7 @@
         <div class="header">
 		
 			<div class="title"><a href="https://github.com/npfriends/cadethelper" target="_blank" style='font-size:24px;'>Cadet Helper</a><font style='font-size:10px;'>&nbsp;&nbsp;&nbsp;by tidnab</font></div>
-			<div class="link" style='top:4px;'>
-				<form name="voiceForm" style="display:inline-block;">
-					<select style="width: 140px;font-weight: bold;padding: 3px; border-radius: 6px;font-size: 16px;text-align: center;" id="voiceMenu" name="voiceMenu" onChange="setVoice(document.voiceForm.voiceMenu.options[document.voiceForm.voiceMenu.options.selectedIndex].value)">
-						<option value=0>MALE 1</option>
-						<option value=1>MALE 2</option>
-						<option value=6>MALE 3 UK</option>
-						<option value=2>FEMALE 1</option>
-						<option value=4>FEMALE 2</option>
-						<option value=5>FEMALE 3 UK</option>
-					</select>
-				</form>
-				<button onclick="toggleTTS()" id='ttspower' style='padding: 2px;background-color: lightgreen;font-weight: bold;border-radius: 6px;font-size: 16px;'>🔊TTS</button>&nbsp;&nbsp;&nbsp;&nbsp;source: <a href="https://github.com/H2n9/OMDW" target="_blank">https://github.com/H2n9/OMDW</a></div>
-			<!-- <div class="title">NP Public Cadet Helper</div> -->
-			<!-- <div class="link" style='top:4px;'><button onclick="toggleTTS()" id='ttspower' style='padding:2px;background-color:lightgreen;'>TTS Activity</button>&nbsp;&nbsp;&nbsp;&nbsp;source: <a href="https://github.com/H2n9/OMDW">https://github.com/H2n9/OMDW</a></div> -->
+			<div class="link" style='top:4px;'>source: <a href="https://github.com/H2n9/OMDW" target="_blank">https://github.com/H2n9/OMDW</a></div>
         </div>
 
         <div class="content">
@@ -274,26 +260,6 @@
 					</div>
                 </div>
 				
-                <div id="SettingsPage" class="page-content hidden">
-                    <div class="section" style="width: 100%;">
-                        <div class="header">
-                            <div class="title">Settings</div>
-                        </div>
-						<div class="charges-group-header" style="text-align:center;">
-							<div>
-								<button onclick="toggleTTS()" id='ttspower2' style='width:100%;font-size:32px;padding: 2px;background-color: lightgreen;font-weight: bold;border-radius: 6px;'>🔊TEXT-TO-SPEECH ENABLED</button>
-							</div>
-							<br>
-							<div>
-								<button onclick="togglePhonetics()" id='ttsphonetics' style='width:100%;font-size:32px;padding: 2px;background-color: lightgreen;font-weight: bold;border-radius: 6px;'>🦻PRONUNCIATIONS ENABLED</button>
-							</div>
-							<div id="proList">
-								PRONUNCIATIONS LIST:
-							</div>
-						</div>
-					</div>
-                </div>
-				
                 <div id="StreetsPage" class="page-content">
 					
                     <div class="section" style="width: 30%;" id="propTab2">
@@ -373,8 +339,6 @@
 								<button class="sgFilter" id="sgPaleto" onclick="PAGES['guesser'].sgHood('Paleto');" style="height:32px;background-color: lightgreen;font-weight: bold;border-radius: 6px;font-size: 16px;">PALETO</button>
 							</div>
 							<div id="sgFilters" class="sg-progress-text"  style="position:absolute;right:10px;top:50px;">
-								<button class="" id="sgNowrong" onclick="PAGES['guesser'].sgNowrong();" style="background-color: lightgreen;font-weight: bold;border-radius: 6px;font-size: 10px; padding: 2px;">✅SAY WRONG</button>
-								<button class="" id="sgNocorrect" onclick="PAGES['guesser'].sgNocorrect();" style="background-color: lightgreen;font-weight: bold;border-radius: 6px;font-size: 10px; padding: 2px;">✅SAY CORRECT</button>
 								<button class="" id="sgNozoom" onclick="PAGES['guesser'].sgNozoom();" style="background-color: lightgreen;font-weight: bold;border-radius: 6px;font-size: 10px; padding: 2px;">✅STREET ZOOM</button>
 							</div>
                         </div>

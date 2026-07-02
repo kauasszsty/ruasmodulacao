@@ -189,7 +189,6 @@ class LocGuesserPage extends Page {
         if (correct) {
             mapObject.selectable = false;
             mapObject.guessedCorrectly = true;
-			textToSpeach( "correct" );
             this.correct += 1;
         } else {
             var correctObject =
@@ -197,9 +196,7 @@ class LocGuesserPage extends Page {
             correctObject.selectable = false;
             correctObject.guessedCorrectly = false;
 
-			textToSpeach( "wrong" );
-            this.map.focus(correctObject, true);
-			
+            this.map.focus(correctObject);
         }
 
         this.streetQueue.splice(this.currentStreetIndex, 1);
@@ -267,7 +264,6 @@ class LocGuesserPage extends Page {
 
 		var newStreet = this.streetQueue[this.currentStreetIndex];
         document.getElementById("lgCurrentLoc").innerHTML = newStreet;
-		setTimeout(function(){ textToSpeach(newStreet); }, 500 );
 
     }
 

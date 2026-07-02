@@ -171,12 +171,9 @@ class ChargesPage extends Page {
 		// sepA.className = "charge-seperator";
         chargeDesc.className = chargeDescribe ? "charge-value" : "charge-value hidden";
 		chargeDesc.innerHTML = charge.Description != null
-                ? "<font style='font-color:white;'>" 
-				+ charge.Description + 
+                ? "<font style='font-color:white;'>"
+				+ charge.Description +
 				"</font>"
-				+ "<span class='chargeRead' style='position:absolute;right:2px;bottom:2px;text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;' onclick='textToSpeach(`" + 
-				charge.Name.replace(/'/g, "&apos;").replace(/"/g, "&quot;") + "! " + 
-				charge.Description.replace(/'/g, "&apos;").replace(/"/g, "&quot;") + "`);'>🔊</span>"
                 : "<b>[Unknown Description]</b>";
 		chargeEntry.appendChild(chargeDesc);
 		

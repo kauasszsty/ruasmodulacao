@@ -12377,23 +12377,3 @@ PROFILES = {}; // unused legacy dataset removed for performance
         }
     }
     
-    PHONETICS = { 
-        "Cholla Road": "Chola Road",
-        "Cholla Springs Avenue": "Chola Springs Avenue",
-        "Buen Vino Road": "Bwen Vino Road",
-        "Chianski Passage":"Chai Annski Passage",
-        "Cockingend Drive":"Cocking End Drive",
-        "Elysian Fields Freeway":"Elli shian Fields Freeway",
-        "Howick Avenue": "Hawick Avenue",
-        "Roy Lowenstein Boulevard": "Roy Lowensteen Boulevard",
-        "San Vitus Boulevard": "San Veetice Boulevard",
-        "Senora Freeway": "Cinora Freeway",
-        "Senora Road": "Cinora Road",
-        "Senora Way": "Cinora Way",
-        "South Mo Milton Drive": "South Moe Milton Drive",
-        "Vespucci Boulevard": "Vispucci Boulevard",
-        "Whispymound Drive": "Whispy mound Drive",
-        "Zancudo Avenue": "Zankoo dough Avenue",
-        "Zancudo Barranca": "Zankoo dough Barranca",
-        "Zancudo Road": "Zankoo dough Road",
-    };

@@ -721,16 +721,10 @@ class MapProvider {
         this.selectedObject = null;
     }
 
-    focus(object, noTTS = false) {
-		if (window.isDebug) console.log("WHERE FROM", curPage, this, object, noTTS);
-		
-			
-		if ( object.street && object.street.Name && !noTTS ){
-			if (window.isDebug) console.log("TTS CALL:", object );
-			textToSpeach( object.street.Name );
-		}
-		
-		if (curPage == "streets"){ 
+    focus(object) {
+		if (window.isDebug) console.log("WHERE FROM", curPage, this, object);
+
+		if (curPage == "streets"){
 			if (window.isDebug) console.log( object.street.Name );
 			setURLParam("id", object.street.Name);
 		} else if (curPage == "guesser"){ 

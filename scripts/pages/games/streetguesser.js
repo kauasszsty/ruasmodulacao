@@ -132,7 +132,6 @@ class StreetGuesserPage extends Page {
         if (correct) {
             mapObject.selectable = false;
             mapObject.guessedCorrectly = true;
-			if ( guessSayCorrect ) textToSpeach( "correct" );
             this.correct += 1;
         } else {
             var correctObject =
@@ -140,8 +139,7 @@ class StreetGuesserPage extends Page {
             correctObject.selectable = false;
             correctObject.guessedCorrectly = false;
 
-			if ( guessSayWrong ) textToSpeach( "wrong" );
-            this.map.focus(correctObject, true);
+            this.map.focus(correctObject);
 			
         }
 
@@ -192,16 +190,6 @@ class StreetGuesserPage extends Page {
 		document.getElementById( "sgNozoom" ).style.backgroundColor = guessZoom ? "lightgreen" : "salmon";
 		document.getElementById( "sgNozoom" ).innerHTML = guessZoom ? "✅STREET ZOOM" : "❌STREET ZOOM";
 	}
-    sgNocorrect(what) {
-		guessSayCorrect = !guessSayCorrect;
-		document.getElementById( "sgNocorrect" ).style.backgroundColor = guessSayCorrect ? "lightgreen" : "salmon";
-		document.getElementById( "sgNocorrect" ).innerHTML = guessSayCorrect ? "✅SAY CORRECT" : "❌SAY CORRECT";
-	}
-    sgNowrong(what) {
-		guessSayWrong = !guessSayWrong;
-		document.getElementById( "sgNowrong" ).style.backgroundColor = guessSayWrong ? "lightgreen" : "salmon";
-		document.getElementById( "sgNowrong" ).innerHTML = guessSayWrong ? "✅SAY WRONG" : "❌SAY WRONG";
-	}
     sgHood(what) {
 		
 		if ( this.hoods.includes(what) )
@@ -244,10 +232,6 @@ class StreetGuesserPage extends Page {
 		
 		if (newStreet != null){
 			document.getElementById("sgCurrentStreet").innerHTML = newStreet;
-			setTimeout(function(){ 
-				if (window.isDebug) console.log("TTS CALL2:", newStreet );
-				textToSpeach(newStreet); 
-			}, 500 );
 		} else
 			document.getElementById("sgCurrentStreet").innerHTML = "GAME OVER";
 
