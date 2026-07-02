@@ -472,10 +472,23 @@ class MapProvider {
             context.isMoving = false;
         };
 
+        this.hoverRAFScheduled = false;
+        this.pendingHoverPos = null;
+
         window.addEventListener("mousemove", function (e) {
             var pos = context.getXY(e);
 
-            context.testForHover(pos);
+            // throttle the (potentially expensive) hover scan to once per
+            // rendered frame instead of once per raw mousemove event
+            context.pendingHoverPos = pos;
+            if (!context.hoverRAFScheduled) {
+                context.hoverRAFScheduled = true;
+                requestAnimationFrame(function () {
+                    context.hoverRAFScheduled = false;
+                    if (context.pendingHoverPos)
+                        context.testForHover(context.pendingHoverPos);
+                });
+            }
 
             if (!context.isHolding) {
                 return;
@@ -547,7 +560,7 @@ class MapProvider {
         this.mapObjects = {};
     }
 
-    draw() {
+    draw(now) {
         var context = this;
 
         // test canvas visibility -> if not visible wait before checking again
@@ -575,11 +588,15 @@ class MapProvider {
             mapObject.draw(ctx, this.offset, this.zoom);
         }
 
-        this.animateMotion(1000 / 60);
+        var lastFrameTime = this.lastFrameTime || now || performance.now();
+        var delta = (now || performance.now()) - lastFrameTime;
+        this.lastFrameTime = now || performance.now();
 
-        setTimeout(function () {
-            context.draw();
-        }, 1000 / 60);
+        this.animateMotion(Math.min(delta, 1000 / 30));
+
+        requestAnimationFrame(function (t) {
+            context.draw(t);
+        });
     }
 
     testForHover(pos) {

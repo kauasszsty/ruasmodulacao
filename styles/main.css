@@ -1,19 +1,24 @@
 :root {
-    
+
     /* Colors */
-    --background: #30475D;
-    
-    --foreground-1: #244970;
-    --foreground-2: #214266;
-    --foreground-3: #1E3A5C;
-    --foreground-4: #15283C;
-    --foreground-5: #081c31;
+    --background: #263445;
+
+    --foreground-1: #2c5490;
+    --foreground-2: #2a4d78;
+    --foreground-3: #223f61;
+    --foreground-4: #172b40;
+    --foreground-5: #0c1826;
+
+    --accent: #4fa3ff;
+    --accent-soft: #3d84d6;
 
     --font-color-1: white;
     --font-color-2: black;
 
     /* Fonts */
-    --font-family: Arial;
+    --font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+    --radius: 0.6vmin;
 }
 
 html,
@@ -33,7 +38,8 @@ body {
 }
 
 .header {
-    background-color: var(--foreground-5);
+    background: linear-gradient(to bottom, var(--foreground-4), var(--foreground-5));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 
     margin: 0;
     height: 6vmin;
@@ -41,6 +47,9 @@ body {
     line-height: 4vmin;
 
     padding: 1vmin;
+
+    position: relative;
+    z-index: 2;
 }
 
 .header .title {
@@ -48,6 +57,14 @@ body {
     font-size: 3vmin;
 
     color: var(--font-color-1);
+}
+
+.header .title a {
+    transition: color 0.2s;
+}
+
+.header .title a:hover {
+    color: var(--accent);
 }
 
 .header .link {
@@ -69,6 +86,7 @@ body {
 .sidebar {
     float: left;
     background-color: var(--foreground-4);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.25);
 
     width: 20vmin;
     height: 100%;
@@ -84,21 +102,24 @@ body {
     padding-left: 2vmin;
 
     border: none;
+    border-left: 3px solid transparent;
 
     color: white;
     font-size: 2vmin;
     font-weight: bold;
 
     cursor: pointer;
-    transition: 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, padding-left 0.2s;
 }
 
 .sidebar button.selected {
     background-color: var(--foreground-2);
+    border-left: 3px solid var(--accent);
 }
 
 .sidebar button:hover {
     background-color: var(--foreground-3);
+    padding-left: 2.5vmin;
 }
 
 @media screen and (max-width: 800px) {
@@ -188,6 +209,12 @@ a, a:visited {
     outline: 2px solid white;
 
     display: inline-block;
+
+    transition: transform 0.15s;
+}
+
+.help:hover {
+    transform: scale(1.1);
 }
 
 .help:hover .tooltip {

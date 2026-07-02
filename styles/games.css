@@ -27,10 +27,23 @@
     color: white;
     font-size: 1.5vmin;
     text-align: center;
+
+    background-color: var(--foreground-2);
+    border-radius: var(--radius);
+    padding: 0.75vmin 1.5vmin;
+    cursor: pointer;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.15s, transform 0.1s;
 }
 
 .sg-header-button:hover, .lg-header-button:hover {
-    color: lightgrey;
+    color: white;
+    background-color: var(--accent-soft);
+}
+
+.sg-header-button:active, .lg-header-button:active {
+    transform: scale(0.96);
 }
 
 .sg-progress-text, .lg-progress-text {
@@ -72,8 +85,9 @@
 
     width: 40vmin;
     height: 50vmin;
-    
-    background-color: var(--foreground-3);
+
+    background: linear-gradient(to bottom, var(--foreground-2), var(--foreground-3));
 
     border-radius: 2vmin;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
