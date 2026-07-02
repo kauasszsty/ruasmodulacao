@@ -70,6 +70,8 @@ class SearchProvider {
 		if (window.isDebug) console.log("SORT THIS SHIT2", objects);
 		
 		
+        var fragment = document.createDocumentFragment();
+
         objects.forEach((object) => {
             var entry = this.drawFunction(object);
 
@@ -85,10 +87,12 @@ class SearchProvider {
             subtitle.innerHTML = entry.subtitle;
             subtitle.className = "subtitle";
 
-            this.contentElement.appendChild(entryParent);
             entryParent.appendChild(title);
             entryParent.appendChild(subtitle);
+            fragment.appendChild(entryParent);
         });
+
+        this.contentElement.appendChild(fragment);
     }
 
     setSearchFilters(filters, streesPage) {

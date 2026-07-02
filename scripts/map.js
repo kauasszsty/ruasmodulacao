@@ -426,7 +426,7 @@ class MapProvider {
 
         // load map iamge
         this.mapImage = new Image();
-        this.mapImage.src = "images/map.png";
+        this.mapImage.src = "images/map.webp";
 
         this.mapImage.onload = () => {
             // center the map based on image size
