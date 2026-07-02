@@ -1,7 +1,6 @@
 class StreetsPage extends Page {
     getDisplayName() {
-        // return 'Streets<font style="color:red;">&nbsp;*NEW</font>';
-        return 'Streets';
+        return 'Ruas';
     }
     getDisplayEmoji() {
         return "🗺️";
@@ -55,7 +54,7 @@ class StreetsPage extends Page {
         var context = this;
         this.search.drawFunction = (property) => {
 			// console.log( property );
-            var subtitle = "[Unknown Location]";
+            var subtitle = "[Local Desconhecido]";
 
             if (property.Name in MAP.Locations) {
                 var locale = MAP.Locations[property.Name];

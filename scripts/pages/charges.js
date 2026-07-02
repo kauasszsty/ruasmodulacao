@@ -1,6 +1,6 @@
 class ChargesPage extends Page {
     getDisplayName() {
-        return "Charges";
+        return "Acusações";
     }
     getDisplayEmoji() {
         return "📜";
@@ -51,16 +51,16 @@ class ChargesPage extends Page {
 
     buildEntries(keys) {
         const groupHeaders = [
-            "Offenses Against Persons",
-            "Offenses Involving Theft",
-            "Offenses Invovling Fraud",
-            "Offenses Involving Damage to Property",
-            "Offenses Against Public Administration",
-            "Offenses Against Public Order",
-            "Offenses Against Public Health and Morals",
-            "Offenses Against Public Safety",
-            "Offenses Involving Operation of a Vehicle/General Citations",
-            "Offenses Involving Natural Resources",
+            "Crimes Contra a Pessoa",
+            "Crimes de Furto",
+            "Crimes de Fraude",
+            "Crimes de Dano ao Patrimônio",
+            "Crimes Contra a Administração Pública",
+            "Crimes Contra a Ordem Pública",
+            "Crimes Contra a Saúde e os Costumes Públicos",
+            "Crimes Contra a Segurança Pública",
+            "Crimes de Trânsito/Infrações Gerais",
+            "Crimes Contra os Recursos Naturais",
         ];
 
         var parent = document.getElementById("chargesSectionParent");
@@ -84,7 +84,7 @@ class ChargesPage extends Page {
                 groupHeader.innerHTML = "<span style='cursor: pointer;' onclick='this.isHidden = !this.isHidden; if (this.isHidden) this.parentElement.parentElement.children[1].style.display = `none`; else this.parentElement.parentElement.children[1].style.display = `grid`; console.log( this.isHidden, this.parentElement.parentElement.children[1] );'>" + (
                     charge.Group != null
                         ? groupHeaders[charge.Group]
-                        : "[Unknown]") + "</span>";
+                        : "[Desconhecido]") + "</span>";
                 groupParent.appendChild(groupHeader);
 
                 currentGroupContainer = document.createElement("div");
@@ -152,7 +152,7 @@ class ChargesPage extends Page {
 			chargeEntry.appendChild(chargeSep);
 		} else if ( charge && charge.Default && charge.Default.Time == 0 ){
 			var chargeSep = document.createElement("span");
-			chargeSep.innerHTML = "Infraction";
+			chargeSep.innerHTML = "Infração";
 			chargeSep.style = "color:#ccc;position:absolute;top:0px;right:2px;font-size:0.7em; font-weight:bold;  text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;";
 			chargeEntry.appendChild(chargeSep);
 		}
@@ -174,7 +174,7 @@ class ChargesPage extends Page {
                 ? "<font style='font-color:white;'>"
 				+ charge.Description +
 				"</font>"
-                : "<b>[Unknown Description]</b>";
+                : "<b>[Descrição Desconhecida]</b>";
 		chargeEntry.appendChild(chargeDesc);
 		
 		/*
@@ -218,7 +218,7 @@ class ChargesPage extends Page {
         tooltip.innerHTML =
             charge.Description != null
                 ? "<b>" + charge.Description + "</b>"
-                : "<b>[Unknown Description]</b>";
+                : "<b>[Descrição Desconhecida]</b>";
         chargeEntry.appendChild(tooltip);
 
         // if (

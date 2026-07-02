@@ -64,7 +64,7 @@ class StreetGuesserStreetObject extends StreetObject {
 
 class StreetGuesserPage extends Page {
     getDisplayName() {
-        return "Street Guesser";
+        return "Adivinhar Rua";
     }
     getDisplayEmoji() {
         return "🔎";
@@ -163,11 +163,11 @@ class StreetGuesserPage extends Page {
 
         document.getElementById(
             "sgCorrect"
-        ).innerHTML = `${this.correct} Correct`;
+        ).innerHTML = `${this.correct} Certas`;
 
         document.getElementById("sgIncorrect").innerHTML = `${
             this.guesses - this.correct
-        } Incorrect`;
+        } Erradas`;
     }
 
     updateTimer() {
@@ -188,7 +188,7 @@ class StreetGuesserPage extends Page {
     sgNozoom(what) {
 		guessZoom = !guessZoom;
 		document.getElementById( "sgNozoom" ).style.backgroundColor = guessZoom ? "lightgreen" : "salmon";
-		document.getElementById( "sgNozoom" ).innerHTML = guessZoom ? "✅STREET ZOOM" : "❌STREET ZOOM";
+		document.getElementById( "sgNozoom" ).innerHTML = guessZoom ? "✅ZOOM NA RUA" : "❌ZOOM NA RUA";
 	}
     sgHood(what) {
 		
@@ -233,7 +233,7 @@ class StreetGuesserPage extends Page {
 		if (newStreet != null){
 			document.getElementById("sgCurrentStreet").innerHTML = newStreet;
 		} else
-			document.getElementById("sgCurrentStreet").innerHTML = "GAME OVER";
+			document.getElementById("sgCurrentStreet").innerHTML = "FIM DE JOGO";
 
     }
 

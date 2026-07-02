@@ -141,7 +141,7 @@ if (window.isDebug) console.log( Locals );
 		   
 class LocGuesserPage extends Page {
     getDisplayName() {
-        return "Loc Guesser";
+        return "Adivinhar Local";
     }
     getDisplayEmoji() {
         return "🔎";
@@ -219,11 +219,11 @@ class LocGuesserPage extends Page {
 
         document.getElementById(
             "lgCorrect"
-        ).innerHTML = `${this.correct} Correct`;
+        ).innerHTML = `${this.correct} Certas`;
 
         document.getElementById("lgIncorrect").innerHTML = `${
             this.guesses - this.correct
-        } Incorrect`;
+        } Erradas`;
     }
 
     updateTimer() {

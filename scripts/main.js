@@ -24,7 +24,7 @@ function streetSortChange() {
 function toggleChargeDescriptions(){
 	chargeDescribe = !chargeDescribe;
 	document.getElementById("chargeDescriptions").style.backgroundColor = chargeDescribe ? "lightgreen" : "salmon";
-	document.getElementById("chargeDescriptions").innerHTML = chargeDescribe ? "DESCRIPTIONS SHOWN" : "DESCRIPTIONS HIDDEN";
+	document.getElementById("chargeDescriptions").innerHTML = chargeDescribe ? "DESCRIÇÕES VISÍVEIS" : "DESCRIÇÕES OCULTAS";
 	var theButtons = document.querySelectorAll(".charge-value font");
 	var buttonArray = Array.from(theButtons);
 	buttonArray.forEach(function(button){
